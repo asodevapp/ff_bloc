@@ -1,4 +1,4 @@
-## Unreleased
+## 1.0.5
 
 - Added constructor-level `FFEventConcurrency` policies for sequential,
   concurrent, droppable, and restartable event handling.

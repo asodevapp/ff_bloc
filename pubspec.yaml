@@ -1,6 +1,6 @@
 name: ff_bloc
 description: Lightweight BLoC foundations for stream-based events, explicit states, concurrency policies, subscriptions, and disposal.
-version: 1.0.4
+version: 1.0.5
 homepage: https://asodevapp.github.io/ff_bloc/
 documentation: https://asodevapp.github.io/ff_bloc/getting-started/
 repository: https://github.com/asodevapp/ff_bloc
