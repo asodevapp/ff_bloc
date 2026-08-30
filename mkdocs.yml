@@ -1,0 +1,90 @@
+site_name: FF Bloc
+site_description: Event-driven Flutter BLoC foundations with explicit state, concurrency policies, subscriptions, observers, and lifecycle ownership.
+site_author: Flutter Files
+site_url: https://asodevapp.github.io/ff_bloc/
+repo_url: https://github.com/asodevapp/ff_bloc
+repo_name: asodevapp/ff_bloc
+edit_uri: edit/main/docs/
+copyright: FF Bloc is part of the Flutter Files toolchain.
+
+theme:
+  name: material
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+
+nav:
+  - Home: index.md
+  - Get started: getting-started.md
+  - Core concepts:
+      - Feature flow: concepts/feature-flow.md
+      - State model: concepts/state-model.md
+      - Event concurrency: concepts/event-concurrency.md
+  - Guides:
+      - Errors and observers: guides/errors-and-observers.md
+      - Subscriptions and disposal: guides/subscriptions-and-disposal.md
+      - Testing: guides/testing.md
+      - Codex skill: guides/codex-skill.md
+  - Troubleshooting: troubleshooting.md
+  - Reference:
+      - API reference: reference/api.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/asodevapp/ff_bloc
+      name: FF Bloc on GitHub
+    - icon: simple/dart
+      link: https://pub.dev/packages/ff_bloc
+      name: ff_bloc on pub.dev
+
+site_dir: build/pages

@@ -6,7 +6,8 @@ import 'package:ff_bloc/ff_bloc.dart';
 import 'package:${appName}${relative}/index.dart';
 
 @immutable
-abstract class ${upperName}Event implements FFBlocEvent<${upperName}State, ${upperName}Bloc> {}
+abstract class ${upperName}Event
+    implements FFBlocEvent<${upperName}State, ${upperName}Bloc> {}
 
 class Load${upperName}Event extends ${upperName}Event {
   Load${upperName}Event({required this.id});
@@ -46,14 +47,14 @@ class Add${upperName}Event extends ${upperName}Event {
   }
 }
 
-class ErrorYouAwesomeEvent extends YouAwesomeEvent {
-  static const String _name = 'ErrorYouAwesomeEvent';
+class Error${upperName}Event extends ${upperName}Event {
+  static const String _name = 'Error${upperName}Event';
 
   @override
   String toString() => _name;
 
   @override
-  Stream<YouAwesomeState> applyAsync({required YouAwesomeBloc bloc}) async* {
+  Stream<${upperName}State> applyAsync({required ${upperName}Bloc bloc}) async* {
     throw Exception('Test error');
   }
 }

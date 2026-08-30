@@ -8,7 +8,7 @@ class ${upperName}Model extends Equatable {
   final String name;
 
   @override
-  List<Object> get props => [ name];
+  List<Object> get props => [name];
 
   Map<dynamic, dynamic> toMap() {
     return {
@@ -40,12 +40,11 @@ class ${upperName}ViewModel extends Equatable {
   @override
   List<Object?> get props => [items /*TODO(all): List all fields here*/];
 
-  // TODO(all): implement copyWith
   ${upperName}ViewModel copyWith({
     List<${upperName}Model>? items,
   }) {
-    return  ${upperName}ViewModel(
-        items: items ?? this.items,
-      );
+    return ${upperName}ViewModel(
+      items: items ?? this.items,
+    );
   }
 }

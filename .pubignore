@@ -1,0 +1,23 @@
+# Documentation portal sources are deployed through GitHub Pages, not pub.dev.
+/docs/
+/mkdocs.yml
+/requirements-docs.txt
+
+# Repository automation and local agent guidance are not package runtime assets.
+/.github/
+/.agents/
+
+# Local Flutter, Dart, IDE, and generated artifacts.
+/.dart_tool/
+/.idea/
+/.packages
+/build/
+/doc/api/
+/ff_bloc.iml
+/pubspec.lock
+/example/.dart_tool/
+/example/build/
+/example/pubspec.lock
+*.log
+*.swp
+.DS_Store

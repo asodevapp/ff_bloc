@@ -1,0 +1,39 @@
+---
+name: CI
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: >-
+          dart format --output=none --set-exit-if-changed
+          lib test example/lib example/test
+      - run: flutter analyze
+      - run: flutter test
+      - run: dart doc --dry-run
+      - run: flutter test
+        working-directory: example
+      - run: flutter pub publish --dry-run
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-docs.txt
+      - run: python -m pip install --requirement requirements-docs.txt
+      - run: python -m mkdocs build --strict

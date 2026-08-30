@@ -1,22 +1,29 @@
 name: ff_bloc
-description: FF bloc for creating awesome apps easy
+description: Lightweight BLoC foundations for stream-based events, explicit states, concurrency policies, subscriptions, and disposal.
 version: 1.0.4
-repository: https://github.com/Gorniv/ff_bloc
-
+homepage: https://asodevapp.github.io/ff_bloc/
+documentation: https://asodevapp.github.io/ff_bloc/getting-started/
+repository: https://github.com/asodevapp/ff_bloc
+issue_tracker: https://github.com/asodevapp/ff_bloc/issues
+topics:
+  - bloc
+  - state-management
+  - flutter
+  - concurrency
 
 environment:
   sdk: '>=2.18.4 <4.0.0'
-  flutter: ">=2.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
+  bloc_concurrency: '>=0.2.0 <0.4.0'
+  equatable: '>=2.0.5 <3.0.0'
   flutter:
     sdk: flutter
-  flutter_bloc: 
-  equatable: 
-  get_it: 
-  bloc_concurrency: 
+  flutter_bloc: '>=8.1.1 <10.0.0'
+  get_it: '>=7.2.0 <10.0.0'
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: 
+  flutter_lints: ^2.0.0

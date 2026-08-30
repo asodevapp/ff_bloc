@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asodevapp.github.io/ff_bloc/sitemap.xml

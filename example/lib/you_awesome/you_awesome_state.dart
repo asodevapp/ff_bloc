@@ -1,6 +1,6 @@
 import 'package:ff_bloc/ff_bloc.dart';
 
-import 'package:example/you_awesome/index.dart';
+import 'package:ff_bloc_example/you_awesome/index.dart';
 
 class YouAwesomeState extends FFState<YouAwesomeState, YouAwesomeViewModel> {
   const YouAwesomeState({
@@ -11,5 +11,9 @@ class YouAwesomeState extends FFState<YouAwesomeState, YouAwesomeViewModel> {
   });
 
   @override
-  StateCopyFactory<YouAwesomeState, YouAwesomeViewModel> getCopyFactory() => YouAwesomeState.new;
+  bool get isEmpty => data?.items.isEmpty ?? true;
+
+  @override
+  StateCopyFactory<YouAwesomeState, YouAwesomeViewModel> getCopyFactory() =>
+      YouAwesomeState.new;
 }

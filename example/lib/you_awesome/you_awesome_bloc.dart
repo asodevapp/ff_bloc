@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:ff_bloc/ff_bloc.dart';
 
-import 'package:example/you_awesome/index.dart';
+import 'package:ff_bloc_example/you_awesome/index.dart';
 
 class YouAwesomeBloc extends FFBloc<YouAwesomeEvent, YouAwesomeState> {
   YouAwesomeBloc({
@@ -14,9 +14,7 @@ class YouAwesomeBloc extends FFBloc<YouAwesomeEvent, YouAwesomeState> {
 
   @override
   Iterable<StreamSubscription>? initSubscriptions() {
-    return <StreamSubscription>[
-      // listen here
-    ];
+    return const <StreamSubscription>[];
   }
 
   @override

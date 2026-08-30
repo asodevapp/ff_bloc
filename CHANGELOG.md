@@ -1,20 +1,31 @@
+## Unreleased
+
+- Added constructor-level `FFEventConcurrency` policies for sequential,
+  concurrent, droppable, and restartable event handling.
+- Forwarded `FFGenericBloc` errors to the global `BlocObserver`, matching
+  `FFBloc` behavior.
+- Reworked the package documentation, example, tests, dependency constraints,
+  and release checks.
+- Added a Material for MkDocs documentation portal, GitHub Pages deployment,
+  and the repo-local `$ff-bloc` Codex skill.
+
 ## 1.0.4
 
--   Update dependencies
+- Updated dependencies.
 
 ## 1.0.3
 
--   improve documentation,
--   rewrite to use bloc_concurrency
+- Improved documentation.
+- Rewrote event handling to use `bloc_concurrency`.
 
 ## 1.0.2
 
--   fis: added Bloc.observer.onError
+- Fixed forwarding errors to `Bloc.observer.onError`.
 
 ## 1.0.1
 
--   Update example
+- Updated the example.
 
 ## 1.0.0
 
--   Init package
+- Initial release.

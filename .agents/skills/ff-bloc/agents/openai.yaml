@@ -1,0 +1,4 @@
+interface:
+  display_name: "FF Bloc"
+  short_description: "Build reliable event-driven Flutter features"
+  default_prompt: "Use $ff-bloc to implement this Flutter feature with explicit state, concurrency, and lifecycle tests."

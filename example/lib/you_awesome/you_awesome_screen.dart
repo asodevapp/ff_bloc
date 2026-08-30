@@ -1,15 +1,9 @@
-import 'package:example/you_awesome/index.dart';
+import 'package:ff_bloc_example/you_awesome/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class YouAwesomeScreen extends StatefulWidget {
-  const YouAwesomeScreen({
-    required this.bloc,
-    super.key,
-  });
-
-  @protected
-  final YouAwesomeBloc bloc;
+  const YouAwesomeScreen({super.key});
 
   @override
   State<YouAwesomeScreen> createState() {
@@ -21,27 +15,21 @@ class YouAwesomeScreenState extends State<YouAwesomeScreen> {
   @override
   void initState() {
     super.initState();
-    if (!widget.bloc.state.hasData) {
+    if (!context.read<YouAwesomeBloc>().state.hasData) {
       _load();
     }
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<YouAwesomeBloc, YouAwesomeState>(
-      bloc: widget.bloc,
       builder: (
         BuildContext context,
         YouAwesomeState currentState,
       ) {
         return currentState.when(
-          onLoading: () => const CircularProgressIndicator(),
-          onEmpty: (data) => _Empty(),
+          onLoading: () => const Center(child: CircularProgressIndicator()),
+          onEmpty: (data) => const _Empty(),
           onData: (data) => _BodyList(data: data),
           onError: (e) => Center(
             child: Column(
@@ -49,8 +37,8 @@ class YouAwesomeScreenState extends State<YouAwesomeScreen> {
                 Text(e.toString()),
                 TextButton(
                   onPressed: _load,
-                  child: const Text('ReLoad'),
-                )
+                  child: const Text('Reload'),
+                ),
               ],
             ),
           ),
@@ -60,52 +48,40 @@ class YouAwesomeScreenState extends State<YouAwesomeScreen> {
   }
 
   void _load() {
-    widget.bloc.add(LoadYouAwesomeEvent(id: '1'));
+    context.read<YouAwesomeBloc>().add(LoadYouAwesomeEvent(id: '1'));
   }
 }
 
-class _BodyList extends StatefulWidget {
+class _BodyList extends StatelessWidget {
   const _BodyList({required this.data});
 
   final YouAwesomeViewModel data;
 
   @override
-  State<_BodyList> createState() => _BodyListState();
-}
-
-class _BodyListState extends State<_BodyList> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-        // primary: true,
-        slivers: [
-          const SliverToBoxAdapter(child: Divider()),
-          SliverList(
-              delegate: SliverChildBuilderDelegate(
+      slivers: [
+        const SliverToBoxAdapter(child: Divider()),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              final item = widget.data.items![index];
+              final item = data.items[index];
               if (index == 0) {
                 return Text('Header $index, id = ${item.name}');
               }
               return Text('Index = $index, id = ${item.name}');
             },
-            childCount: widget.data.items!.length,
-          ))
-        ]);
+            childCount: data.items.length,
+          ),
+        ),
+      ],
+    );
   }
 }
 
 class _Empty extends StatelessWidget {
+  const _Empty();
+
   @override
   Widget build(BuildContext context) {
     return const Column(

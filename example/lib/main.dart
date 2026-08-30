@@ -1,5 +1,6 @@
-import 'package:example/you_awesome/index.dart';
+import 'package:ff_bloc_example/you_awesome/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,18 +9,18 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'ff_bloc example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: YouAwesomePage(
-        bloc: YouAwesomeBloc(
+      home: BlocProvider(
+        create: (_) => YouAwesomeBloc(
           provider: YouAwesomeProvider(),
         ),
+        child: const YouAwesomePage(),
       ),
     );
   }

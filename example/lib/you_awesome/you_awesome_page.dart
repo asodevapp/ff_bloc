@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:example/you_awesome/index.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ff_bloc_example/you_awesome/index.dart';
 
+class YouAwesomePage extends StatelessWidget {
+  const YouAwesomePage({super.key});
 
-class YouAwesomePage extends StatefulWidget {
-  const YouAwesomePage({
-    required this.bloc,
-    super.key
-    });
   static const String routeName = '/youAwesome';
-  
-  final YouAwesomeBloc bloc;
-
-  @override
-  State<YouAwesomePage> createState() => _YouAwesomePageState();
-}
-
-class _YouAwesomePageState extends State<YouAwesomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +13,31 @@ class _YouAwesomePageState extends State<YouAwesomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('YouAwesome'),
-         actions: [
+        actions: [
           IconButton(
             icon: const Icon(Icons.error),
+            tooltip: 'Show error',
             onPressed: () {
-              widget.bloc.add(ErrorYouAwesomeEvent());
+              context.read<YouAwesomeBloc>().add(ErrorYouAwesomeEvent());
             },
           ),
           IconButton(
             icon: const Icon(Icons.add),
+            tooltip: 'Add item',
             onPressed: () {
-              widget.bloc.add(AddYouAwesomeEvent());
+              context.read<YouAwesomeBloc>().add(AddYouAwesomeEvent());
             },
           ),
           IconButton(
             icon: const Icon(Icons.clear),
+            tooltip: 'Clear items',
             onPressed: () {
-              widget.bloc.add(ClearYouAwesomeEvent());
+              context.read<YouAwesomeBloc>().add(ClearYouAwesomeEvent());
             },
           ),
         ],
       ),
-      body: YouAwesomeScreen(bloc: widget.bloc),
+      body: const YouAwesomeScreen(),
     );
   }
 }

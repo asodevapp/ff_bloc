@@ -1,16 +1,23 @@
-# example
+# ff_bloc example
 
-A new Flutter project.
+A small runnable feature that demonstrates the complete `ff_bloc` flow:
 
-## Getting Started
+- initial loading through an `FFBlocEvent`;
+- data, empty, and error rendering through `FFState.when`;
+- incremental updates;
+- subscription-safe bloc ownership through `BlocProvider`.
 
-This project is a starting point for a Flutter application.
+Run it from this directory:
 
-A few resources to get you started if this is your first Flutter project:
+```shell
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Run the interaction test with:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```shell
+flutter test
+```
+
+Start with [`lib/you_awesome/you_awesome_bloc.dart`](lib/you_awesome/you_awesome_bloc.dart)
+and [`lib/you_awesome/you_awesome_event.dart`](lib/you_awesome/you_awesome_event.dart).

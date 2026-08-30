@@ -11,6 +11,7 @@ typedef StateCopyFactory<Self, DataT> = Self Function({
   required Object? error,
 });
 
+/// The derived presentation status of an [FFState] or [FFGenericState].
 enum FFStateStatus {
   empty,
   loading,
@@ -18,6 +19,7 @@ enum FFStateStatus {
   error,
 }
 
+/// Convenience checks for [FFStateStatus].
 extension StatusCheck on FFStateStatus {
   bool get isEmpty => this == FFStateStatus.empty;
   bool get isLoading => this == FFStateStatus.loading;
@@ -25,6 +27,11 @@ extension StatusCheck on FFStateStatus {
   bool get isError => this == FFStateStatus.error;
 }
 
+/// Immutable state with loading, data, error, and monotonic version fields.
+///
+/// Status precedence is loading, error, empty, then data. Override [isEmpty]
+/// when a non-null domain value, such as an empty list, should be considered
+/// empty.
 @immutable
 abstract class FFState<Self, DataT> extends Equatable {
   const FFState({
@@ -43,6 +50,7 @@ abstract class FFState<Self, DataT> extends Equatable {
   @nonVirtual
   final dynamic error;
 
+  /// Derives the current status using loading > error > empty > data priority.
   @nonVirtual
   FFStateStatus get status {
     if (isLoading) {
@@ -71,6 +79,7 @@ abstract class FFState<Self, DataT> extends Equatable {
   bool get isEmpty => data == null;
   bool get isNotEmpty => !isEmpty;
 
+  /// Exhaustively maps the current [status] to a value.
   @nonVirtual
   R when<R>({
     required R Function() onLoading,
@@ -92,6 +101,7 @@ abstract class FFState<Self, DataT> extends Equatable {
     }
   }
 
+  /// Maps selected statuses and falls back to [onElse] for the rest.
   @nonVirtual
   R whenOrElse<R>({
     required R Function() onElse,
@@ -122,6 +132,10 @@ abstract class FFState<Self, DataT> extends Equatable {
   @protected
   StateCopyFactory<Self, DataT> getCopyFactory();
 
+  /// Copies this state, retaining omitted values and incrementing [version].
+  ///
+  /// Passing `null` retains the old nullable value. Use [copyWithoutError],
+  /// [copyWithoutData], or [copyClear] when a value must be cleared.
   Self copy({
     bool? isLoading,
     DataT? data,
@@ -135,6 +149,7 @@ abstract class FFState<Self, DataT> extends Equatable {
     );
   }
 
+  /// Copies this state, clears [error], and increments [version].
   Self copyWithoutError({
     bool? isLoading,
     DataT? data,
@@ -147,6 +162,7 @@ abstract class FFState<Self, DataT> extends Equatable {
     );
   }
 
+  /// Copies this state, clears [data], and increments [version].
   Self copyWithoutData({
     bool? isLoading,
     Object? error,
@@ -159,6 +175,7 @@ abstract class FFState<Self, DataT> extends Equatable {
     );
   }
 
+  /// Clears [data] and [error], sets loading explicitly, and increments version.
   Self copyClear({
     bool isLoading = false,
   }) {
@@ -174,6 +191,9 @@ abstract class FFState<Self, DataT> extends Equatable {
   List<Object?> get props => [version, isLoading, data, error];
 }
 
+/// A state base for custom implementations of the copy operations.
+///
+/// Prefer [FFState] when its built-in copy semantics are sufficient.
 @immutable
 abstract class FFGenericState<DataT> extends Equatable {
   const FFGenericState({

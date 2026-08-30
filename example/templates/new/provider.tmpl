@@ -15,10 +15,9 @@ class ${upperName}Provider {
   Future<List<${upperName}Model>?> addMore(List<${upperName}Model>? now) async {
     final result = [
       ...(now ?? <${upperName}Model>[]),
-      ${upperName}Model(name: now?.length.toString() ?? '0')
+      ${upperName}Model(name: now?.length.toString() ?? '0'),
     ];
     return result;
   }
 
 }
-

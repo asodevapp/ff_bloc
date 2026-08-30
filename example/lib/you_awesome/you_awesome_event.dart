@@ -1,17 +1,18 @@
 import 'dart:async';
 
-import 'package:flutter/widgets.dart';
+import 'package:ff_bloc_example/you_awesome/index.dart';
 import 'package:ff_bloc/ff_bloc.dart';
-
-import 'package:example/you_awesome/index.dart';
+import 'package:flutter/widgets.dart';
 
 @immutable
-abstract class YouAwesomeEvent implements FFBlocEvent<YouAwesomeState, YouAwesomeBloc> {}
+abstract class YouAwesomeEvent
+    implements FFBlocEvent<YouAwesomeState, YouAwesomeBloc> {}
 
 class LoadYouAwesomeEvent extends YouAwesomeEvent {
   LoadYouAwesomeEvent({required this.id});
+
   final String? id;
-  
+
   static const String _name = 'LoadYouAwesomeEvent';
 
   @override
@@ -27,7 +28,6 @@ class LoadYouAwesomeEvent extends YouAwesomeEvent {
     );
   }
 }
-
 
 class AddYouAwesomeEvent extends YouAwesomeEvent {
   static const String _name = 'AddYouAwesomeEvent';

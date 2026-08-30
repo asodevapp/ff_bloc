@@ -1,0 +1,145 @@
+:root {
+  --ff-gradient-start: #5b21b6;
+  --ff-gradient-middle: #4f46e5;
+  --ff-gradient-end: #0891b2;
+}
+
+.md-typeset .ff-hero {
+  background:
+    radial-gradient(circle at 84% 8%, rgb(103 232 249 / 32%), transparent 28%),
+    linear-gradient(135deg, var(--ff-gradient-start), var(--ff-gradient-middle) 56%, var(--ff-gradient-end));
+  border-radius: 1.25rem;
+  color: #fff;
+  margin: 1rem 0 2rem;
+  overflow: hidden;
+  padding: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+}
+
+.md-typeset .ff-hero h1 {
+  color: #fff;
+  font-size: clamp(2.6rem, 5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 0 0 1rem;
+  max-width: none;
+}
+
+.md-typeset .ff-hero > p {
+  color: rgb(255 255 255 / 88%);
+  font-size: 1.05rem;
+  max-width: 42rem;
+}
+
+.md-typeset .ff-actions {
+  margin-top: 1.5rem;
+}
+
+.md-typeset .ff-actions p {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  max-width: none;
+}
+
+.md-typeset .ff-actions .md-button {
+  border-color: rgb(255 255 255 / 74%);
+  color: #fff;
+  margin: 0;
+  padding-inline: 0.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+.md-typeset .ff-actions .md-button--primary {
+  background: #fff;
+  border-color: #fff;
+  color: #312e81;
+}
+
+.md-typeset .ff-hero > h1 .headerlink {
+  display: none;
+}
+
+.md-typeset .ff-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+  margin: 1.5rem 0 2rem;
+}
+
+.md-typeset .ff-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.85rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.md-typeset .ff-card h3 {
+  margin-top: 0;
+}
+
+.md-typeset .ff-card p:last-child {
+  margin-bottom: 0;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .ff-card {
+  background: rgb(255 255 255 / 2%);
+}
+
+.md-typeset .ff-boundary {
+  align-items: stretch;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.5rem 0;
+}
+
+.md-typeset .ff-boundary > div {
+  background: var(--md-code-bg-color);
+  border-radius: 0.75rem;
+  padding: 1rem 1.1rem;
+}
+
+@media screen and (max-width: 60rem) {
+  .md-typeset .ff-hero {
+    padding: clamp(2rem, 6vw, 3.25rem);
+  }
+
+  .md-typeset .ff-hero h1 {
+    font-size: clamp(2.5rem, 7vw, 3.75rem);
+    line-height: 1.02;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 44rem) {
+  .md-typeset .ff-hero {
+    border-radius: 1rem;
+    margin: 0.75rem 0 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .md-typeset .ff-hero h1 {
+    font-size: clamp(2.15rem, 11vw, 3rem);
+    letter-spacing: -0.035em;
+  }
+
+  .md-typeset .ff-hero > p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .md-typeset .ff-actions {
+    margin-top: 1.25rem;
+  }
+
+  .md-typeset .ff-actions p {
+    grid-template-columns: 1fr;
+  }
+
+  .md-typeset .ff-boundary {
+    grid-template-columns: 1fr;
+  }
+}
